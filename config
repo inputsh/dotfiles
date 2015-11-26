@@ -177,7 +177,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position top
-	font pango: Awesome 10
+	font pango: Hack 10
     status_command i3blocks -c ~/.i3/i3blocks.conf
     colors {
 		background $bg-color
