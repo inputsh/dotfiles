@@ -211,3 +211,4 @@ new_window 1pixel
 gap_size 10
 
 bindsym Print exec gnome-screenshot
+bindsym $mod+Print exec gnome-screenshot -a
