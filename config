@@ -33,7 +33,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -180,7 +180,7 @@ bar {
 		#                  border             background         text
 		focused_workspace  $bg-color          $bg-color          $text-color
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   #FFFFFF
 	}
 }
 
@@ -191,7 +191,7 @@ exec thunderbird
 exec spotify
 exec compton
 exec /usr/bin/numlockx on # turns on the Num Lock as soon as i3 starts
-exec_always feh --bg-fill /home/r3bl/.i3/wallpapers/Olhaa89.jpg
+exec_always feh --bg-fill /home/r3bl/.i3/wallpapers/g8tZxj2.png
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
