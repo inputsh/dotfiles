@@ -94,7 +94,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1 "
-set $workspace2 "2 "
+set $workspace2 "2 "
 set $workspace3 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
@@ -102,7 +102,7 @@ set $workspace6 "6 "
 set $workspace7 "7 "
 set $workspace8 "8 "
 set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position top
-	font pango: Hack 10
+	font pango: Hack 10, Font Awesome 10
     status_command i3blocks -c ~/.i3/i3blocks.conf
     colors {
 		background $bg-color
