@@ -1,24 +1,23 @@
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Complete reference: http://i3wm.org/docs/userguide.html
 
-set $bg-color 	         #17001d
-set $inactive-bg-color   #17001d
-# White one used for the focused window
-set $text-color          #f3f4f5
-# light blue one used for the unfocused indicators
-set $inactive-text-color #80699f
-# red one used for the "urgent" windows
-set $urgent-bg-color     #FFFFFF
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #452c54
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #452c54
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #452c54
-client.urgent           $urgent-bg-color    $text-color        $bg-color            #452c54
-
+# main configs
 set $mod Mod1
+new_window 1pixel
+gap_size 8
+
+# color variables
+set $bg-color            #1f242a
+set $text-color          #fffffd
+set $inactive-text-color #9a9ba0
+set $urgent-bg-color     #697b91
+
+# class             border      background  text                    indicator              child_border
+client.focused      $bg-color   $bg-color   $text-color             $inactive-text-color   $bg-color
+client.focused      $bg-color   $bg-color   $inactive-text-color    $inactive-text-color   $bg-color
+client.unfocused    $bg-color   #222222     #888888                 #292d2e                #222222
+client.urgent       #2f343a     #900000     #ffffff                 #900000                #900000
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -27,7 +26,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango: Ubuntu Mono, Awesome 10
+# font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -65,6 +64,8 @@ bindsym $mod+Shift+ccaron move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
@@ -93,16 +94,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+# name workspaces
+set $workspace1 "1 terminal"
+set $workspace2 "2 editor"
+set $workspace3 "3 browser"
+set $workspace4 "4 files"
+set $workspace5 "5 other"
+set $workspace6 "6 other"
+set $workspace7 "7 other"
+set $workspace8 "8 chat"
+set $workspace9 "9 mail"
+set $workspace10 "10 music"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -115,13 +117,6 @@ bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
-
-assign     [class="xfce4-terminal"]    $workspace1
-assign     [class="Atom"]              $workspace2
-assign     [class="Firefox"]           $workspace3
-assign     [class="Thunderbird"]       $workspace9
-assign     [class="Spotify"]           $workspace10
-assign     [class="Hexchat"]           $workspace8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -171,50 +166,57 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    position top
-	font pango: Hack 10, Font Awesome 10
-    status_command i3blocks -c ~/.i3/i3blocks.conf
-    colors {
-		background $bg-color
-	    separator #80699f
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   #FFFFFF
-	}
+        position top
+        font pango: Hack 10, Font Awesome 10
+        status_command i3blocks -c ~/.i3/i3blocks.conf
+
+        colors {
+            background $bg-color
+            separator $bg-color
+            #                  border                 background            text
+            focused_workspace  $bg-color              $bg-color             $text-color
+    		inactive_workspace $bg-color   $bg-color             $inactive-text-color
+    		urgent_workspace   $bg-color   $inactive-text-color  $text-color
+        }
 }
 
+hide_edge_borders both
+
+# color variables
+#set $bg-color            #1d2e30
+#set $text-color          #f3f4f5
+#set $inactive-text-color #80699f
+#set $urgent-bg-color     #f3f4f5
+
+exec_always feh --bg-fill /home/r3bl/.i3/wallpapers/6FH45UP.jpg
+
+# lockscreen
+bindsym $mod+x exec bash /home/r3bl/.i3/lock.sh
+
+# screenshot shorcuts
+bindsym Print exec gnome-screenshot
+bindsym $mod+Print exec gnome-screenshot -a
+
+# move windows to workspaces
+assign     [class="xfce4-terminal"]    $workspace1
+assign     [class="Atom"]              $workspace2
+assign     [class="Firefox"]           $workspace3
+assign     [class="Thunderbird"]       $workspace9
+for_window [class="Spotify"] move to workspace $workspace10
+assign     [class="Hexchat"]           $workspace8
+
+# execute applications as soon as i3 starts
 exec firefox
 exec xfce4-terminal
 exec atom
 exec thunderbird
 exec spotify
 exec compton
-exec /usr/bin/numlockx on # turns on the Num Lock as soon as i3 starts
-exec_always feh --bg-fill /home/r3bl/.i3/wallpapers/g8tZxj2.png
+
+# turns on the Num Lock as soon as i3 starts
+exec /usr/bin/numlockx on
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle # mute sound
-
-# Sreen brightness controls
-bindsym $mod+Shift+Up exec xbacklight -inc 10       # increase brightness
-bindsym $mod+Shift+Down exec xbacklight -dec 10     # decrease brightness
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-# Lockscreen
-
-bindsym $mod+x exec bash /home/r3bl/.i3/lock.sh
-
-new_window 1pixel
-
-gap_size 8
-
-bindsym Print exec gnome-screenshot
-bindsym $mod+Print exec gnome-screenshot -a
