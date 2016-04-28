@@ -6,15 +6,15 @@ The dotfiles for my [i3wm](http://i3wm.org/) install.
 
 ## Screenshots
 
-![clean desktop](http://i.imgur.com/xbj12l9.png)
+![clean desktop](http://i.imgur.com/77e3lq4.png)
 
-![terminal output](http://i.imgur.com/fbhY4pu.png)
+![terminal output](http://i.imgur.com/9tVoReZ.png)
 
-![firefox homepage](http://i.imgur.com/UNeJfTe.png)
+![Firefox homepage](http://i.imgur.com/nbypInT.png)
 
-![Hacker News stylesheet](http://i.imgur.com/r2W9hQu.png)
+![Hacker News stylesheet](http://i.imgur.com/444T3jP.png)
 
-![custom Atom look](http://i.imgur.com/HSy4Q5p.png)
+![custom Atom look](http://i.imgur.com/HYyDAt0.png)
 
 ## Uses
 

@@ -172,7 +172,7 @@ bar {
 
         colors {
             background $bg-color
-            separator $bg-color
+            separator $text-color
             #                  border                 background            text
             focused_workspace  $bg-color              $bg-color             $text-color
     		inactive_workspace $bg-color   $bg-color             $inactive-text-color
