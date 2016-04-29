@@ -20,8 +20,6 @@ The dotfiles for my [i3wm](http://i3wm.org/) install.
 
 The big list of everything that this config uses:
 
-#### Applications
-
 * [i3](http://i3wm.org/) (obviously)
 * [i3-gaps](https://github.com/Airblader/i3) (for the margins)
 * [i3blocks](https://github.com/vivien/i3blocks) (for the status bar at the top right of the bar)
@@ -30,9 +28,6 @@ The big list of everything that this config uses:
 * [feh](https://github.com/derf/feh) (for switching wallpapers)
 * [font-awesome](http://fontawesome.io/) (for the icons next to the workspace indicators)
 * [Custom GitHub indicator script](https://github.com/aleksandar-todorovic/dotfiles/blob/master/github.sh) (to display the number of notifications)
-
-#### Firefox
-
 * [Stylish](https://userstyles.org/) (for modifying Firefox look)
 * [Twily's Powerline Firefox CSS](https://userstyles.org/styles/102262/twily-s-powerline-firefox-css) (slightly modified colors)
 * [Firefox Custom](https://r3bl.me/firefox-custom/) (my own custom Firefox homepage)
