@@ -5,7 +5,8 @@
 # main configs
 set $mod Mod1
 new_window 1pixel
-gap_size 8
+gaps inner 8
+gaps outer 8
 
 # color variables
 set $bg-color            #1f242a
@@ -168,7 +169,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         font pango: Hack 10, Font Awesome 10
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
         colors {
             background $bg-color
@@ -188,10 +189,10 @@ hide_edge_borders both
 #set $inactive-text-color #80699f
 #set $urgent-bg-color     #f3f4f5
 
-exec_always feh --bg-fill /home/r3bl/.i3/wallpapers/6FH45UP.jpg
+exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/6FH45UP.jpg
 
 # lockscreen
-bindsym $mod+x exec bash /home/r3bl/.i3/lock.sh
+bindsym $mod+x exec bash /home/r3bl/.config/i3/lock.sh
 
 # screenshot shorcuts
 bindsym Print exec gnome-screenshot
