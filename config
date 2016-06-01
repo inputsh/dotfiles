@@ -3,7 +3,7 @@
 # Complete reference: http://i3wm.org/docs/userguide.html
 
 # main configs
-set $mod Mod1
+set $mod Mod4
 new_window 1pixel
 gaps inner 8
 gaps outer 8
@@ -169,7 +169,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         font pango: Hack 10, Font Awesome 10
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command python3 ~/.config/i3/i3status.py
 
         colors {
             background $bg-color
@@ -204,7 +204,7 @@ assign     [class="Atom"]              $workspace2
 assign     [class="Firefox"]           $workspace3
 assign     [class="Thunderbird"]       $workspace9
 for_window [class="Spotify"] move to workspace $workspace10
-assign     [class="Hexchat"]           $workspace8
+assign     [class="Slack"]             $workspace8
 
 # execute applications as soon as i3 starts
 exec firefox
@@ -213,6 +213,8 @@ exec atom
 exec thunderbird
 exec spotify
 exec compton
+exec nm-applet
+exec slack
 
 # turns on the Num Lock as soon as i3 starts
 exec /usr/bin/numlockx on
