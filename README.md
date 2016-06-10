@@ -33,3 +33,4 @@ The big list of everything that this config uses:
 * [Firefox Custom](https://r3bl.me/firefox-custom/) (my own custom Firefox homepage)
 * [Unsplash.com API](https://unsplash.com/developers) (for randomly generating the background in my custom Firefox homepage)
 * [New Tab Override](https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/) (to get back the `browser.newtab.url` preference that Firefox used to have)
+* [i3lock-fancy](https://github.com/meskarune/i3lock-fancy)
