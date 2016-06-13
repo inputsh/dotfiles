@@ -9,7 +9,7 @@ gaps inner 8
 gaps outer 8
 
 # color variables
-set $bg-color            #1f242a
+set $bg-color            #101d2e
 set $text-color          #fffffd
 set $inactive-text-color #9a9ba0
 set $urgent-bg-color     #697b91
@@ -189,10 +189,10 @@ hide_edge_borders both
 #set $inactive-text-color #80699f
 #set $urgent-bg-color     #f3f4f5
 
-exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/6FH45UP.jpg
+exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/PpgMdkJ.png
 
 # lockscreen
-bindsym $mod+x exec bash /home/r3bl/.config/i3/lock.sh
+bindsym $mod+x exec bash /home/r3bl/.config/i3/lock
 
 # screenshot shorcuts
 bindsym Print exec gnome-screenshot
