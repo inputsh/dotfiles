@@ -5,20 +5,20 @@
 # main configs
 set $mod Mod4
 new_window 1pixel
-gaps inner 8
-gaps outer 8
+gaps inner 10
+gaps outer 10
 
 # color variables
 set $bg-color            #101d2e
 set $text-color          #fffffd
 set $inactive-text-color #9a9ba0
 set $urgent-bg-color     #697b91
+set $border-color        #ffdd55
 
-# class             border      background  text                    indicator              child_border
-client.focused      $bg-color   $bg-color   $text-color             $inactive-text-color   $bg-color
-client.focused      $bg-color   $bg-color   $inactive-text-color    $inactive-text-color   $bg-color
-client.unfocused    $bg-color   #222222     #888888                 #292d2e                #222222
-client.urgent       #2f343a     #900000     #ffffff                 #900000                #900000
+# class             border         background  text            indicator              child_border
+client.focused      $bg-color      $bg-color   $text-color     $inactive-text-color   $bg-color
+client.unfocused    $bg-color      #222222     #888888         #292d2e                #222222
+client.urgent       #2f343a        #900000     #ffffff         #900000                #900000
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -96,16 +96,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # name workspaces
-set $workspace1 "1 terminal"
-set $workspace2 "2 editor"
-set $workspace3 "3 browser"
-set $workspace4 "4 files"
-set $workspace5 "5 other"
-set $workspace6 "6 other"
-set $workspace7 "7 other"
-set $workspace8 "8 chat"
-set $workspace9 "9 mail"
-set $workspace10 "10 music"
+set $workspace1 "1 l"
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -130,6 +130,10 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# sets the firefox workspace without the gaps
+workspace $workspace3 gaps outer 0
+workspace $workspace3 gaps inner 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -174,10 +178,10 @@ bar {
         colors {
             background $bg-color
             separator $text-color
-            #                  border                 background            text
-            focused_workspace  $bg-color              $bg-color             $text-color
-    		inactive_workspace $bg-color   $bg-color             $inactive-text-color
-    		urgent_workspace   $bg-color   $inactive-text-color  $text-color
+            #                  border          background            text
+            focused_workspace  $bg-color       $bg-color             $text-color
+            inactive_workspace $bg-color       $bg-color             $inactive-text-color
+	    urgent_workspace   $bg-color       $inactive-text-color  $text-color
         }
 }
 
@@ -189,6 +193,7 @@ hide_edge_borders both
 #set $inactive-text-color #80699f
 #set $urgent-bg-color     #f3f4f5
 
+# set the background
 exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/PpgMdkJ.png
 
 # lockscreen
@@ -223,3 +228,7 @@ exec /usr/bin/numlockx on
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle # mute sound
+
+# 
+bindsym $mod+F11 exec xbacklight -dec 10
+bindsym $mod+F12 exec xbacklight -inc 10
