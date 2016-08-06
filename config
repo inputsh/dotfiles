@@ -5,11 +5,11 @@
 # main configs
 set $mod Mod4
 new_window 1pixel
-gaps inner 10
-gaps outer 10
+gaps inner 7
+gaps outer 7
 
 # color variables
-set $bg-color            #101d2e
+set $bg-color            #000000
 set $text-color          #fffffd
 set $inactive-text-color #9a9ba0
 set $urgent-bg-color     #697b91
@@ -17,7 +17,7 @@ set $border-color        #ffdd55
 
 # class             border         background  text            indicator              child_border
 client.focused      $bg-color      $bg-color   $text-color     $inactive-text-color   $bg-color
-client.unfocused    $bg-color      #222222     #888888         #292d2e                #222222
+client.unfocused    $bg-color      $bg-color   #888888         #292d2e                #222222
 client.urgent       #2f343a        #900000     #ffffff         #900000                #900000
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -31,6 +31,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+bindsym $mod+Shift+m floating enable; resize set 400 px 240 px; sticky enable; move window to position 950 px 25 px
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -98,14 +100,14 @@ bindsym $mod+a focus parent
 # name workspaces
 set $workspace1 "1 l"
 set $workspace2 "2 "
-set $workspace3 "3 "
+set $workspace3 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
 set $workspace7 "7 "
 set $workspace8 "8 "
 set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -130,10 +132,6 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
-
-# sets the firefox workspace without the gaps
-workspace $workspace3 gaps outer 0
-workspace $workspace3 gaps inner 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -173,6 +171,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         font pango: Hack 10, Font Awesome 10
+        # i3bar_command i3bar -t
         status_command python3 ~/.config/i3/i3status.py
 
         colors {
@@ -181,20 +180,20 @@ bar {
             #                  border          background            text
             focused_workspace  $bg-color       $bg-color             $text-color
             inactive_workspace $bg-color       $bg-color             $inactive-text-color
-	    urgent_workspace   $bg-color       $inactive-text-color  $text-color
+	          urgent_workspace   $bg-color       $inactive-text-color  $text-color
         }
 }
 
 hide_edge_borders both
 
 # color variables
-#set $bg-color            #1d2e30
+#set $bg-color            #000000
 #set $text-color          #f3f4f5
 #set $inactive-text-color #80699f
 #set $urgent-bg-color     #f3f4f5
 
 # set the background
-exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/PpgMdkJ.png
+exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/sarajevo.jpg
 
 # lockscreen
 bindsym $mod+x exec bash /home/r3bl/.config/i3/lock
@@ -207,28 +206,30 @@ bindsym $mod+Print exec gnome-screenshot -a
 assign     [class="xfce4-terminal"]    $workspace1
 assign     [class="Atom"]              $workspace2
 assign     [class="Firefox"]           $workspace3
+assign     [class="chromium-browser"]  $workspace3
 assign     [class="Thunderbird"]       $workspace9
-for_window [class="Spotify"] move to workspace $workspace10
 assign     [class="Slack"]             $workspace8
+assign     [class="Hexchat"]           $workspace8
+for_window [class="Spotify"] move to workspace $workspace10
 
 # execute applications as soon as i3 starts
-exec firefox
 exec xfce4-terminal
-exec atom
 exec thunderbird
 exec spotify
 exec compton
 exec nm-applet
-exec slack
 
 # turns on the Num Lock as soon as i3 starts
 exec /usr/bin/numlockx on
+
+# makes ytplay always floating
+for_window [class="chromium-browser" instance="crx_jjphmlaoffndcnecccgemfdaaoighkel"] floating enable
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle # mute sound
 
-# 
+#
 bindsym $mod+F11 exec xbacklight -dec 10
 bindsym $mod+F12 exec xbacklight -inc 10
