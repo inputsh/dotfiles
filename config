@@ -5,20 +5,20 @@
 # main configs
 set $mod Mod4
 new_window 1pixel
-gaps inner 7
-gaps outer 7
+gaps inner 10
+gaps outer 10
 
 # color variables
-set $bg-color            #000000
-set $text-color          #fffffd
-set $inactive-text-color #9a9ba0
-set $urgent-bg-color     #697b91
+set $bg-color            #343D46
+set $text-color          #dfe1e8
+set $inactive-text-color #a7adba
+set $urgent-bg-color     #dd88aa
 set $border-color        #ffdd55
 
-# class             border         background  text            indicator              child_border
-client.focused      $bg-color      $bg-color   $text-color     $inactive-text-color   $bg-color
-client.unfocused    $bg-color      $bg-color   #888888         #292d2e                #222222
-client.urgent       #2f343a        #900000     #ffffff         #900000                #900000
+# class             border         background         text            indicator              child_border
+client.focused      $bg-color      $bg-color          $text-color     $inactive-text-color   $bg-color
+client.unfocused    $bg-color      $bg-color          #888888         $inactive-text-color   #222222
+client.urgent       #bg-color      $urgent-bg-color   $bgcolor        $inactive-text-color   #900000
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -35,17 +35,13 @@ floating_modifier $mod
 bindsym $mod+Shift+m floating enable; resize set 400 px 240 px; sticky enable; move window to position 950 px 25 px
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "80" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Hack 18" -fake-transparency -run-list-command "~/.i3/.alias.sh" -run-command "/bin/zsh -i -c '{cmd}'" -rnow
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -53,7 +49,7 @@ bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+ccaron focus right
 
-# alternatively, you can use the cursor keys:
+# change focus using the cursor keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -73,6 +69,8 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
+
+workspace 2 output HDMI-1
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -98,16 +96,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # name workspaces
-set $workspace1 "1 l"
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace1 "1 term"
+set $workspace2 "2 work"
+set $workspace3 "3 brws"
+set $workspace4 "4 chat"
+set $workspace5 "5 play"
+set $workspace6 "6 bckg"
+set $workspace7 "7 othr"
+set $workspace8 "8 othr"
+set $workspace9 "9 othr"
+set $workspace10 "10 othr"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -133,8 +131,6 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -165,35 +161,29 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
+set $transparent #00000000
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         position top
         font pango: Hack 10, Font Awesome 10
-        # i3bar_command i3bar -t
+	      i3bar_command i3bar -t
         status_command python3 ~/.config/i3/i3status.py
 
         colors {
-            background $bg-color
+            background $transparent
             separator $text-color
             #                  border          background            text
             focused_workspace  $bg-color       $bg-color             $text-color
             inactive_workspace $bg-color       $bg-color             $inactive-text-color
-	          urgent_workspace   $bg-color       $inactive-text-color  $text-color
+	          urgent_workspace   $bg-color       $eebbbb           $221133
         }
 }
 
 hide_edge_borders both
 
-# color variables
-#set $bg-color            #000000
-#set $text-color          #f3f4f5
-#set $inactive-text-color #80699f
-#set $urgent-bg-color     #f3f4f5
-
 # set the background
-exec_always feh --bg-fill /home/r3bl/.config/i3/wallpapers/sarajevo.jpg
+exec_always feh --bg-fill /home/r3bl/.config/i3/Wallpapers/HHGTTG/quote1.png
 
 # lockscreen
 bindsym $mod+x exec bash /home/r3bl/.config/i3/lock
@@ -203,33 +193,35 @@ bindsym Print exec gnome-screenshot
 bindsym $mod+Print exec gnome-screenshot -a
 
 # move windows to workspaces
-assign     [class="xfce4-terminal"]    $workspace1
+assign     [class="gnome-terminal"]    $workspace1
 assign     [class="Atom"]              $workspace2
 assign     [class="Firefox"]           $workspace3
 assign     [class="chromium-browser"]  $workspace3
-assign     [class="Thunderbird"]       $workspace9
-assign     [class="Slack"]             $workspace8
-assign     [class="Hexchat"]           $workspace8
-for_window [class="Spotify"] move to workspace $workspace10
+assign     [class="Thunderbird"]       $workspace6
+assign     [class="Slack"]             $workspace4
+assign     [class="Hexchat"]           $workspace4
+assign     [class="VLC"]               $workspace5
+assign     [class="Rhythmbox"]         $workspace5
+for_window [class="Spotify"] move to workspace $workspace5
 
 # execute applications as soon as i3 starts
-exec xfce4-terminal
-exec thunderbird
-exec spotify
+exec gnome-terminal   # workspace1
+exec atom             # workspace2
+exec chromium-browser # workspace3
+exec signal           # workspace4
+exec spotify          # workspace5
+exec thunderbird      # workspace6
 exec compton
 exec nm-applet
 
 # turns on the Num Lock as soon as i3 starts
 exec /usr/bin/numlockx on
 
-# makes ytplay always floating
-for_window [class="chromium-browser" instance="crx_jjphmlaoffndcnecccgemfdaaoighkel"] floating enable
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle # mute sound
 
-#
+# backlight keyboard shortcuts
 bindsym $mod+F11 exec xbacklight -dec 10
 bindsym $mod+F12 exec xbacklight -inc 10

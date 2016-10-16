@@ -4,6 +4,7 @@
 import subprocess
 
 from i3pystatus import Status
+from i3pystatus.weather import wunderground
 
 black       = "#2c2836"
 darkblack   = "#73707e"
@@ -19,14 +20,16 @@ magenta     = "#bb65b6"
 darkmagenta = "#cf96cf"
 cyan        = "#68a8c5"
 darkcyan    = "#9ac1d9"
-white       = "#f1edfb"
-darkwhite   = "#f1edfb"
+white       = "#a7adba"
+greenish    = "#aaccbb"
+darkwhite   = "#bbaacc"
 background  = "#133B47"
 
 status = Status(standalone=True)
 
 status.register("clock",
-    format=" %a %-d %b %X",)
+    format=" %a %-d %b %X",
+    color=white)
 
 status.register("battery",
     format="{status} {percentage:.0f}% {remaining:%E%h:%M}",
@@ -34,7 +37,7 @@ status.register("battery",
     alert_percentage=15,
     color=white,
     critical_color=red,
-    charging_color=yellow,
+    charging_color=greenish,
     full_color=white,
     status={
         "DIS": "",
@@ -42,15 +45,23 @@ status.register("battery",
         "FULL": "",
     },)
 
+status.register('weather',
+    format='{icon}[ {current_temp}{temp_unit}]',
+    color=white,
+    backend=wunderground.Wunderground(
+        api_key='',
+        location_code='zmw:00000.1.14654',
+        units='metric',
+    ),)
+
+status.register('github',
+    access_token='',
+    format=" {unread_count}",
+    color=white)
+
 status.register("pulseaudio",
     format=" {volume}%",
     color_muted=red,
     color_unmuted=white,)
-
-status.register("network",
-    interface="wlp6s0",
-    color_up=white,
-    color_down=red,
-    format_up=" {essid} {quality:.0f}%",)
 
 status.run()
