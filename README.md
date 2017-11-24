@@ -1,30 +1,28 @@
 # dotfiles
 
-dotfiles for my [i3wm](http://i3wm.org/) installation.
+dotfiles for my Ubuntu + GNOME combination.
 
 ## Screenshots
 
-![clean desktop](http://i.imgur.com/FohsT0l.png)
+![clean desktop](https://i.imgur.com/ea1L57V.png)
 
-![terminal output](http://i.imgur.com/Dj0LdrV.png)
+![minimalistic firefox nightly](https://i.imgur.com/6Gd0rkz.png)
 
-![lock screen](http://i.imgur.com/wlNylcK.png)
+![address bar certificate status](https://i.imgur.com/wGnWpXE.png)
 
-![Firefox homepage](http://i.imgur.com/zMnA1nZ.png)
+![terminal output](https://i.imgur.com/82G7XJ8.png)
 
-![Hacker News stylesheet](http://i.imgur.com/hTQqCF1.png)
+![note taking](https://i.imgur.com/YuvRg3C.png)
+
+![article reading](https://i.imgur.com/lv8KaZx.png)
+
+![DuckDuckGo + Bookworm](https://i.imgur.com/njfXRx0.png)
 
 ## Using
 
-* [i3](http://i3wm.org/) (obviously)
-* [i3-gaps](https://github.com/Airblader/i3) (for the margins)
-* [rofi](https://github.com/DaveDavenport/rofi) (for launching applications)
-* [compton](https://github.com/chjj/compton) (for making rofi transparent)
-* [feh](https://github.com/derf/feh) (for switching wallpapers)
-* [font-awesome](http://fontawesome.io/) (for the icons next to the workspace indicators)
-* [Custom GitHub indicator script](https://github.com/aleksandar-todorovic/dotfiles/blob/master/github.sh) (to display the number of notifications)
-* [Stylish](https://userstyles.org/) (for modifying Firefox look)
-* [Twily's Powerline Firefox CSS](https://userstyles.org/styles/102262/twily-s-powerline-firefox-css) (slightly modified colors)
-* [Taco](https://tacoapp.com/) (to show my tasks on the Firefox new tab page)
-* [New Tab Override](https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/) (to get back the `browser.newtab.url` preference that Firefox used to have)
-* [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) (lock screen)
+* [Ubuntu](https://www.ubuntu.com/) (obviously)
+* [GNOME](https://www.gnome.org/)
+* [Firefox Nightly](https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly)
+* [Stylus](https://addons.mozilla.org/en-US/firefox/addon/styl-us/) (for modifying website CSS)
+* GNOME extensions: [AlternateTab](https://extensions.gnome.org/extension/15/alternatetab/), [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/) (running in panel mode), [User Themes](https://extensions.gnome.org/extension/19/user-themes/), [TopIcons Plus](https://extensions.gnome.org/extension/1031/topicons/) and [MConnect](https://extensions.gnome.org/extension/1272/mconnect/) (for pairing with my phone using KDE Connect)
+* Wallpaper: https://wallpaperscraft.com/image/shape_point_cube_geometric_36834_3840x2160.jpg

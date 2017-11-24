@@ -1,0 +1,8 @@
+@-moz-document domain("getpocket.com") {
+.page-renderdark {
+    background: #424242;
+}
+#pkt-nav {
+    background: #424242;
+}
+}

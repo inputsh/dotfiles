@@ -1,9 +1,0 @@
-@namespace url(http://www.w3.org/1999/xhtml);
-@-moz-document domain(tacoapp.com) {
-    .tasks-layout, .task, .connector, .connector-bw, .tasks-menu {
-        background-color: #101d2e !important;
-    }
-    .inline-feedback, #queued-tasks-toggler, .tasks-list-title {
-        visibility: hidden !important;
-    }
-}

@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Name=Nightly Web Browser
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer;Firefox
+Exec=env MOZ_USE_XINPUT2=1 /opt/nightly/firefox %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=firefox-trunk
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/r$
+StartupNotify=true
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=Open a New Window
+Exec=env MOZ_USE_XINPUT2=1 /opt/nightly/firefox -new-window
+
+[Desktop Action new-private-window]
+Name=Open a New Private Window
+Exec=env MOZ_USE_XINPUT2=1 /opt/nightly/firefox -private-window
+
