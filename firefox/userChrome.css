@@ -1,52 +1,27 @@
+/* The floating scrollbar thing */
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+toolbarbutton#alltabs-button {
+    -moz-binding: url("userChrome.xml#js");
+}
 
 /* Hide the three dots thing in the address bar */
 #pageActionButton {
   visibility: hidden;
 }
 
-/* Open bookmarks toolbar only in new tabs
-#main-window #PersonalToolbar {
-  visibility: collapse !important;
+/* about:reader custom css */
+@-moz-document url-prefix("about:reader") {
+  body.dark {
+    background: #424242;
+    font-family: "Proxima Nova" !important;
+  }
+
+  p, code, pre, blockquote, ul, ol, li, figure, .wp-caption {
+    font-size: 1.1em;
+    line-height: 1.6em;
+  }
 }
-#main-window[title^="about:newtab"] #PersonalToolbar,
-#main-window[title^="New Tab"] #PersonalToolbar,
-#main-window[title^="Nightly"] #PersonalToolbar {
-  visibility: visible !important;
-}
-*/
-
-/* Increase the layout a bit */
-
-.tab-stack {
-  height: 50px;
-}
-
-#nav-bar {
-  height: 40px;
-}
-
-#PersonalToolbar {
-  height: 30px;
-}
-
-
-/* Customize the Enpass Icon to https://i.imgur.com/mbF2Lia.png */
-#firefox-enpass_enpass_io-browser-action {
-  --webextension-menupanel-image: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-image-light: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-image-dark: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-image-2x: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-image-2x-light: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-image-2x-dark: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image-light: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image-dark: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image-2x: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image-2x-light: url(https://i.imgur.com/mbF2Lia.png) !important;
-  --webextension-menupanel-toolbar-image-2x-dark: url(https://i.imgur.com/mbF2Lia.png) !important;
-
-}
-
 
 /* The below colors the URL bar if there's something wrong with the SSL certificate or it doesn't exist. */
 #urlbar {
@@ -68,60 +43,53 @@
 #urlbar[pageproxystate='valid'] #identity-box.unknownIdentity:after {
   background: #ff0039; /* Firefox Red 50 */
 }
-
 /* about:config */
 #urlbar[pageproxystate='valid'] #identity-box.chromeUI:after {
   background: #0a84ff; /* Firefox Blue 50 */
 }
-
 /* uBlock Origin Dashboard */
 #urlbar[pageproxystate='valid'] #identity-box.extensionPage:after {
   background: #45a1ff; /* Firefox Blue 40 */
 }
-
 /* https://mixed.badssl.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent:after {
   background: #d7b600; /* Firefox Yellow 60 */
 }
-
 /* https://very.badssl.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked:after {
   background: #d7b600; /* Firefox Yellow 60 */
 }
-
 /* https://self-signed.badssl.com/ but add certificate exception */
 #urlbar[pageproxystate='valid'] #identity-box.certUserOverridden:after {
   background: #ffe900; /* Firefox Yellow 50 */
 }
-
 /* Don't know an example for this */
 #urlbar[pageproxystate='valid'] #identity-box.weakCipher:after {
   background: #a47f00; /* Firefox Yellow 70 */
 }
-a
 /* https://mixed-script.badssl.com/ but disable protection */
 #urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent:after {
   background: #d70022;  /* Firefox Red 60 */
 }
-
 /* http://http-login.badssl.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms:after {
   background: #a4000f;  /* Firefox Red 70 */
 }
-/* Makes the certificate company white */
+
+
+/* Makes the EV certificate identity white */
 #identity-box.verifiedIdentity, #identity-icon-labels {
   color: #FFF !important;
 }
 
 
-/* Use Default Dark Theme + Normal Density */
+/* Use default dark system theme + Touch density */
 :root:-moz-lwtheme-brighttext {
   --chrome-background-color: #424242 !important;
   --chrome-color: #8f8f8f !important;
   --chrome-secondary-background-color: #363636 !important;
   --toolbox-border-bottom-color: #2e2e2e !important;
 }
-
 [data-identity-color="blue"] {
   --identity-tab-color: #7193F7 !important;
   --identity-icon-color: #7193F7 !important;
@@ -141,7 +109,6 @@ a
 :root:-moz-lwtheme {
   --tab-line-color: none !important;
 }
-
 :root:not([uidensity=compact]) #back-button {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -151,9 +118,9 @@ a
   border: none !important;
 }
 
-/* Make the new tab page black */
-@-moz-document url(about:newtab) {
-  html, body {
-    background-color: #645e5a !important;
-  }
+/* Force the input boxes to be white with black text */
+input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='checkbox']):not([type='radio']), textarea, select {
+    -moz-appearance: none !important;
+    background-color: white;
+    color: black;
 }
